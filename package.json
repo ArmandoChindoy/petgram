@@ -1,9 +1,12 @@
 {
+    "homepage": "https://armandochindoy.github.io/petgram/",
     "scripts": {
         "vercel-build": "npm run build",
         "build": "webpack --config webpack.config.js --env production",
         "start": "webpack serve --config webpack.config.dev.js",
-        "lint": "standard"
+        "lint": "standard",
+        "predeploy": "npm run build",
+        "deploy": "gh-pages -d dist"
     },
     "devDependencies": {
         "@babel/core": "^7.15.4",
@@ -26,7 +29,6 @@
     },
     "dependencies": {
         "@apollo/client": "^3.4.11",
-        "gh-pages": "^3.2.3",
         "graphql": "^15.5.3",
         "json-loader": "^0.5.7",
         "react": "^17.0.2",
