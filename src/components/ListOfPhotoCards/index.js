@@ -1,20 +1,5 @@
 import { PhotoCard } from '../PhotoCard'
-import { gql, useQuery } from '@apollo/client'
-
-const GET_PHOTOS = gql`
-  query getPhotos {
-    photos {
-      id
-      categoryId
-      src
-      likes
-      userId
-      liked
-    }
-  }
-`
-
-const ListOfPhotoCardsComponent = ({ photos }) => {
+export const ListOfPhotoCardsComponent = ({ photos }) => {
   console.log(photos)
   return (
     <ul>
@@ -23,12 +8,4 @@ const ListOfPhotoCardsComponent = ({ photos }) => {
       ))}
     </ul>
   )
-}
-
-export const ListOfPhotoCards = () => {
-  const { loading, error, data } = useQuery(GET_PHOTOS)
-  if (loading) return 'loading'
-  if (loading) return `Error! ${error.message}`
-
-  return ListOfPhotoCardsComponent(data)
 }
