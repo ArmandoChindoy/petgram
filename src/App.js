@@ -1,24 +1,30 @@
-import { ListOfCategories } from './components/ListOfCategories'
-import { ListOfPhotoCards } from './containers/ListOfPhotoCards'
 import { GlobalStyles } from './Styles/GlobalStyles'
 import { Logo } from './components/Logo'
-import { PhotoCardWithQuery } from './containers/PhotoCardWithQuery'
+import { Home } from '@/pages/Home'
+import { Router, Switch, Route } from 'react-router-dom'
+import { createHashHistory } from 'history'
+import { Detail } from '@/pages/Detail'
+import { Favs } from '@/pages/Favs'
+import { User } from '@/pages/User'
+import { Navbar } from './components/Nabvar'
+
+// const customHistory = createBrowserHistory()
+const HashHistory = createHashHistory()
 export const App = () => {
-  const urlParams = new window.URLSearchParams(window.location.search)
-  const detailId = urlParams.get('detail')
-  console.log(detailId)
   return (
     <>
       <GlobalStyles />
-      <Logo />
-      {detailId
-        ? <PhotoCardWithQuery id={detailId} />
-        : (
-          <>
-            <ListOfCategories />
-            <ListOfPhotoCards categoryId={6} />
-          </>
-          )}
+      <Router history={HashHistory}>
+        <Logo />
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/pet/:id' component={Home} />
+          <Route exact path='/detail/:id' component={Detail} />
+          <Route exact path='/favs' component={Favs} />
+          <Route exact path='/user' component={User} />
+        </Switch>
+        <Navbar />
+      </Router>
     </>
   )
 }

@@ -4,6 +4,7 @@ import { FavButton } from '@/components/FavButton'
 import { useSetVisible } from '../../hooks/useSetVisible'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { ToggleLikeMutation } from '../../containers/ToggleLikeMutation'
+import { Link } from 'react-router-dom'
 const DefaultImage =
   'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 
@@ -21,16 +22,15 @@ export const PhotoCard = ({ id, likes = 0, src = DefaultImage }) => {
       })
     setLiked(!liked)
   }
-  // console.log('{ mutation, mutationLoading, mutationError }', { mutation, mutationLoading, mutationError })
   return (
     <Article ref={element}>
       {show && (
         <>
-          <a href={`/?detail=${id}`}>
+          <Link to={`/detail/${id}`}>
             <ImageWrapper>
               <Image src={src} alt='' />
             </ImageWrapper>
-          </a>
+          </Link>
           <FavButton liked={liked} likes={likes} onClick={HandleFavClick} />
         </>
       )}

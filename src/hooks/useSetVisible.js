@@ -7,9 +7,7 @@ export const useSetVisible = () => {
     () => {
       const observer = new window.IntersectionObserver((entries) => {
         const { isIntersecting } = entries[0]
-        console.log(element)
         if (isIntersecting) {
-          console.log('si')
           setShow(true)
           observer.disconnect()
         }
