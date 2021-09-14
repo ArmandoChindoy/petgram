@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { Svg } from './styles'
-import { Link } from 'react-router-dom'
+import { Link } from '@reach/router'
 
 export const Logo = (props) =>
   <Link to='/'>

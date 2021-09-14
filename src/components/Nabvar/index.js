@@ -6,13 +6,13 @@ export const Navbar = () => {
   const size = 32
   return (
     <Nav>
-      <Link exact to='/'>
+      <Link to='/'>
         <MdHome size={size} />
       </Link>
-      <Link exact to='/fav'>
+      <Link to='/favs'>
         <MdFavorite size={size} />
       </Link>
-      <Link exact to='/account'>
+      <Link to='/user'>
         <MdAccountCircle size={size} />
       </Link>
     </Nav>

@@ -4,7 +4,7 @@ import { FavButton } from '@/components/FavButton'
 import { useSetVisible } from '../../hooks/useSetVisible'
 import { useLocalStorage } from '../../hooks/useLocalStorage'
 import { ToggleLikeMutation } from '../../containers/ToggleLikeMutation'
-import { Link } from 'react-router-dom'
+import { Link } from '@reach/router'
 const DefaultImage =
   'https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
 

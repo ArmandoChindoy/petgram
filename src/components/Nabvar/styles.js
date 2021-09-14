@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { NavLink as LinkRouter } from 'react-router-dom'
+import { Link as LinkRouter } from '@reach/router'
 import { FadeIn } from '@/Styles/animations'
 export const Nav = styled.nav`
   position: fixed;

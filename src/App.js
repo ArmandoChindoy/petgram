@@ -1,30 +1,37 @@
 import { GlobalStyles } from './Styles/GlobalStyles'
 import { Logo } from './components/Logo'
 import { Home } from '@/pages/Home'
-import { Router, Switch, Route } from 'react-router-dom'
-import { createHashHistory } from 'history'
+import { Router } from '@reach/router'
 import { Detail } from '@/pages/Detail'
 import { Favs } from '@/pages/Favs'
 import { User } from '@/pages/User'
-import { Navbar } from './components/Nabvar'
+import { Navbar } from '@/components/Nabvar'
+import Context from '@/Context'
+import { NotRegisterUser } from '@/pages/NotRegisterUser'
 
-// const customHistory = createBrowserHistory()
-const HashHistory = createHashHistory()
 export const App = () => {
   return (
     <>
       <GlobalStyles />
-      <Router history={HashHistory}>
-        <Logo />
-        <Switch>
-          <Route exact path='/' component={Home} />
-          <Route exact path='/pet/:id' component={Home} />
-          <Route exact path='/detail/:id' component={Detail} />
-          <Route exact path='/favs' component={Favs} />
-          <Route exact path='/user' component={User} />
-        </Switch>
-        <Navbar />
+      <Logo />
+      <Router>
+        <Home path='/' />
+        <Home path='/pet/:id' />
+        <Detail path='/detail/:detailId' />
       </Router>
+      <Context.Consumer>
+        {({ isAuth }) =>
+          isAuth
+            ? <Router>
+              <Favs path='/favs' />
+              <User path='/user' />
+            </Router>
+            : <Router>
+              <NotRegisterUser path='/favs' />
+              <NotRegisterUser path='/user' />
+            </Router>}
+      </Context.Consumer>
+      <Navbar />
     </>
   )
 }
