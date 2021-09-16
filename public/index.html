@@ -10,5 +10,20 @@
     </head>
     <body>
         <div id="app"></div>
+        <noscript>
+            <h3>This appp need javascript to work</h3>
+        </noscript>
+        <script>
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", () => {
+                    navigator.serviceWorker
+                        .register("./service-worker.js")
+                        .then((registration) => {
+                            console.log("Sw register");
+                        })
+                        .catch((error) => console.error(error));
+                });
+            }
+        </script>
     </body>
 </html>

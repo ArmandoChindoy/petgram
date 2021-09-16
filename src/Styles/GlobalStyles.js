@@ -30,7 +30,7 @@ html {
     background: #fefefe;
     height: 100vh;
     margin: 0 auto;
-    max-width: 500px;
+    max-width: 50rem;
     overscroll-behavior: none;
     width: 100%;
   }

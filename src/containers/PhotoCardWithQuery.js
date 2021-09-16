@@ -4,7 +4,6 @@ import { GET_SINGLE_PHOTO } from '../hoc/GET_SINGLE_PHOTO'
 import { useQuery } from '@apollo/client'
 
 export const PhotoCardWithQuery = ({ id }) => {
-  console.log(id)
   const { loading, error, data } = useQuery(GET_SINGLE_PHOTO, {
     variables: {
       id: id

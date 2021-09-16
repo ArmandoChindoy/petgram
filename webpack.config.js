@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
 const TerserPlugin = require('terser-webpack-plugin')
+const WebpackPwaManifest = require('webpack-pwa-manifest')
+const { GenerateSW } = require('workbox-webpack-plugin')
+
 /** @type {import('webpack').Configuration} */
 module.exports = {
   entry: './src/index.js',
@@ -35,6 +38,21 @@ module.exports = {
       {
         test: /\.s[ac]ss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.json/,
+        use: ['json-loader']
+      },
+      {
+        test: /\.(png|jpeg|jpg|svg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]'
+            }
+          }
+        ]
       }
     ]
   },
@@ -45,6 +63,41 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css'
+    }),
+    new WebpackPwaManifest({
+      name: 'petgram',
+      shortname: 'Petgram',
+      description: 'Petgram',
+      background_color: '#fff',
+      theme_color: '#fff',
+      icons: [
+        {
+          src: path.resolve(__dirname, './src/assets/img/logo-min.png'),
+          sizes: [96, 128, 192, 256, 384, 512]
+        }
+      ]
+    }),
+    new GenerateSW({
+      runtimeCaching: [
+        {
+          // eslint-disable-next-line prefer-regex-literals
+          urlPattern: new RegExp(
+            'https://(res.cloudinary.com | images.unsplash.com)'
+          ),
+          handler: 'CacheFirst',
+          options: {
+            cacheName: 'images'
+          }
+        },
+        {
+          // eslint-disable-next-line prefer-regex-literals
+          urlPattern: new RegExp('https://petgram-server-olive.vercel.app'),
+          handler: 'NetworkFirst',
+          options: {
+            cacheName: 'api'
+          }
+        }
+      ]
     })
   ],
   optimization: {

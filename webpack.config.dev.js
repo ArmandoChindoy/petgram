@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// const WebpackPwaManifest = require('webpack-pwa-manifest')
+// const { GenerateSW } = require('workbox-webpack-plugin')
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -15,7 +17,9 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       '@': path.resolve(__dirname, 'src/'),
-      '@/components': path.resolve(__dirname, 'src/components/')
+      '@/components': path.resolve(__dirname, 'src/components/'),
+      'react-dom$': 'react-dom/profiling',
+      'scheduler/tracing': 'scheduler/tracing-profiling'
     }
   },
   module: {
@@ -41,12 +45,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpeg|jpg|svg|gif)$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            name: 'images/[hash]-[name].[ext]'
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[hash]-[name].[ext]'
+            }
           }
-        }]
+        ]
       }
     ]
   },
@@ -58,6 +64,41 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].css'
     })
+    // new WebpackPwaManifest({
+    //   name: 'petgram',
+    //   shortname: 'Petgram',
+    //   description: 'Petgram',
+    //   background_color: '#fff',
+    //   theme_color: '#fff',
+    //   icons: [
+    //     {
+    //       src: path.resolve(__dirname, './src/assstes/img/logo-min.png'),
+    //       sizes: [96, 128, 192, 256, 384, 512]
+    //     }
+    //   ]
+    // }),
+    // new GenerateSW({
+    //   runtimeCaching: [
+    //     {
+    //       // eslint-disable-next-line prefer-regex-literals
+    //       urlPattern: new RegExp(
+    //         'https://(res.cloudinary.com | images.unsplash.com)'
+    //       ),
+    //       handler: 'CacheFirst',
+    //       options: {
+    //         cacheName: 'images'
+    //       }
+    //     },
+    //     {
+    //       // eslint-disable-next-line prefer-regex-literals
+    //       urlPattern: new RegExp('https://petgram-server-olive.vercel.app'),
+    //       handler: 'NetworkFirst',
+    //       options: {
+    //         cacheName: 'api'
+    //       }
+    //     }
+    //   ]
+    // })
   ],
   devServer: {
     static: {
