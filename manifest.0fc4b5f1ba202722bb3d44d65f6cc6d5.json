@@ -1,0 +1,43 @@
+{
+  "icons": [
+    {
+      "src": "./icon_512x512.79451ae83f62c1af41fd0f461da6e1ec.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon_384x384.d5011f7dc72cb1c1a10d064e7a706daf.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon_256x256.a954280940432d76ecccc7c8800f5df2.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon_192x192.a3c76dc5290ce36b355fce8a1b75e44b.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon_128x128.274e1f2bd8f40bc369da1b32520b84ce.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon_96x96.56de1daf4e280e6ff411b60177582e18.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    }
+  ],
+  "name": "petgram",
+  "short_name": "petgram",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "shortname": "Petgram",
+  "description": "Petgram",
+  "background_color": "#fff",
+  "theme_color": "#fff"
+}
