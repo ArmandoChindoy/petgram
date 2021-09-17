@@ -1,8 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// const WebpackPwaManifest = require('webpack-pwa-manifest')
-// const { GenerateSW } = require('workbox-webpack-plugin')
 
 /** @type {import('webpack').Configuration} */
 module.exports = {
@@ -17,9 +15,7 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
     alias: {
       '@': path.resolve(__dirname, 'src/'),
-      '@/components': path.resolve(__dirname, 'src/components/'),
-      'react-dom$': 'react-dom/profiling',
-      'scheduler/tracing': 'scheduler/tracing-profiling'
+      '@/components': path.resolve(__dirname, 'src/components/')
     }
   },
   module: {

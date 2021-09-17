@@ -3,9 +3,7 @@ import { GlobalStyles } from './Styles/GlobalStyles'
 import { Logo } from './components/Logo'
 import { Home } from '@/pages/Home'
 import {
-  Redirect, Router,
-  createMemorySource,
-  createHistory
+  Redirect, Router
 } from '@reach/router'
 import { Detail } from '@/pages/Detail'
 import { User } from '@/pages/User'
@@ -17,10 +15,6 @@ import { NotFound } from './pages/NotFound'
 
 const Favs = React.lazy(() => import('./pages/Favs'))
 
-// for some types of tests you want a memory source
-const source = createMemorySource('/petgram')
-const history = createHistory(source)
-
 export const App = () => {
   const { isAuth } = useContext(Context)
   return (
@@ -28,7 +22,7 @@ export const App = () => {
       <Suspense fallback={<div />}>
         <GlobalStyles />
         <Logo />
-        <Router history={history}>
+        <Router>
           <NotFound default />
           <Home path='/' />
           <Home path='/pet/:id' />

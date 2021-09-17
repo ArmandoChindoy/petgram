@@ -80,7 +80,6 @@ module.exports = {
     new GenerateSW({
       runtimeCaching: [
         {
-          // eslint-disable-next-line prefer-regex-literals
           urlPattern: new RegExp(
             'https://(res.cloudinary.com | images.unsplash.com)'
           ),
@@ -90,7 +89,6 @@ module.exports = {
           }
         },
         {
-          // eslint-disable-next-line prefer-regex-literals
           urlPattern: new RegExp('https://petgram-server-olive.vercel.app'),
           handler: 'NetworkFirst',
           options: {
